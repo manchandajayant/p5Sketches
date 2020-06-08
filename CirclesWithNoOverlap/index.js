@@ -1,15 +1,15 @@
 var circles = [];
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
-  for (var i = 0; i < 50; i++) {
+  var protection = 0;
+  while (circles.length < 300) {
     var circle = {
       x: random(width),
       y: random(height),
-      r: 40,
+      r: random(12, 40),
     };
     var overlapping = false;
-    for (var j = 0; j < circles.length; i++) {
+    for (var j = 0; j < circles.length; j++) {
       var other = circles[j];
       var d = dist(circle.x, circle.y, other.x, other.y);
       if (d < circle.r + other.r) {
@@ -19,6 +19,11 @@ function setup() {
     }
     if (!overlapping) {
       circles.push(circle);
+    }
+
+    protection++;
+    if (protection > 10000) {
+      break;
     }
   }
 
