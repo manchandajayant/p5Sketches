@@ -1,6 +1,8 @@
 var circles = [];
+let bubble;
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
   var protection = 0;
   while (circles.length < 300) {
     var circle = {
@@ -28,7 +30,13 @@ function setup() {
   }
 
   for (var i = 0; i < circles.length; i++) {
-    fill(100, 150, 250, 100);
+    print(circles[i].x);
+    fill(
+      random(circles[i].x / 2, circles[i].y / 2),
+      random(circles[i].x / 2, circles[i].r / 2),
+      random(circles[i].y / 2, circles[i].r / 2),
+      130
+    );
     noStroke();
     ellipse(circles[i].x, circles[i].y, circles[i].r * 2, circles[i].r * 2);
   }
